@@ -1,25 +1,25 @@
 jQuery.Ruler
 ============
 
-jQuery.Ruler is a jQuery plugin born out of sheer curiosity and on a whim. 
-It dynamically places rulers on the x & y axes, with tick marks every 5 pixels & labels every 50 pixels. 
+jQuery.Ruler is a jQuery plugin born out of sheer curiosity and on a whim.
+It dynamically places rulers on the x & y axes, with tick marks every 5 pixels & labels every 50 pixels.
 Should you wish, there are options to enable tracking of the cursor position with a crosshair and/or a box showing the coordinates within the ruler space.
 
 ### Usage
 
-Add jQuery & the Ruler plugin. 
-jQuery.Ruler requires jQuery v1.8.0 or greater. 
+Add jQuery & the Ruler plugin.
+jQuery.Ruler requires jQuery v1.8.0 or greater.
 At the time of writing jQuery v1.8.3 is the latest stable release.
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="js/jquery.ruler.js"></script>
-	
+
 #### Script
 
     $(function() {
-        $('body').ruler();    
+        $('body').ruler();
     });
-	
+
 ### Licensing
 
 jQuery.Ruler is dual licensed under the MIT &amp GPL licenses.
@@ -35,11 +35,11 @@ Options are set with an object as an argument to the .ruler() function call. All
             hRuleSize: 18,
             showCrosshair : false,
             showMousePos: true
-        });    
+        });
     });
-		
+
 option(type:default)
-	
+
 ### vRuleSize
 
 vRuleSize(integer:18)  
@@ -59,3 +59,16 @@ Enables a dotted crosshair that spans the entire page and tracks the cursor posi
 
 showMousePos(boolean:true)  
 Enables an overlay box that indicates the cursor position within the rulers. Disabled on touchscreen devices due to lack of a .mousemove() event.
+
+
+Methods
+-------
+
+### drawGrid
+
+drawGrid(top, left, width, height[, background])  
+Draws a grid on the screen
+
+    $('body').ruler({
+         drawGrid:{ top: 120, left: 150, width: 100, height: 200, background: '#fff000' }
+    });
