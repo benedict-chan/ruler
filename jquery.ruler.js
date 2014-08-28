@@ -119,8 +119,8 @@
 			.addClass('rGrid')
 			.width(width)
 			.height(height)
-			.css('left', left)
-			.css('top', top);
+			.css('left', left + settings.hRuleSize)
+			.css('top', top + settings.vRuleSize);
 
 			if(background){
 				rGrid.css('background', background);
@@ -132,12 +132,14 @@
 			.css('top', ((height/2) - 10)).appendTo(rGrid);
 
 			rGrid.appendTo('body');
-
 		};
+
 		if(settings.drawGrid){
 				drawGrid(settings.drawGrid.top, settings.drawGrid.left, settings.drawGrid.width, settings.drawGrid.height
 				,settings.drawGrid.background);
 		}
+
+
 
 		return this.each(function() {
 			var $this = $(this);
