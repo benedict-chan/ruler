@@ -114,6 +114,24 @@
 			}//vert ticks
 		};
 
+		var drawGrid = function(top, left, width, height, background){
+			var rGrid = $('<div></div>')
+			.addClass('rGrid')
+			.width(width)
+			.height(height)
+			.css('left', left)
+			.css('top', top);
+
+			if(background){
+				rGrid.css('background', background);
+			}
+
+			rGrid.appendTo('body');
+		};
+		if(settings.drawGrid){
+				drawGrid(settings.drawGrid.top, settings.drawGrid.left, settings.drawGrid.width, settings.drawGrid.height
+				,settings.drawGrid.background);
+		}
 
 		return this.each(function() {
 			var $this = $(this);
