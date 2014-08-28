@@ -126,7 +126,13 @@
 				rGrid.css('background', background);
 			}
 
+			$('<div></div>').addClass('rGridPos rGridText').text(' (' + left + ', '  + top + ')').appendTo(rGrid);
+			$('<div></div>').addClass('rGridWidth rGridText').text('W:' + width ).width(width).appendTo(rGrid);
+			$('<div></div>').addClass('rGridHeight rGridText').text('H:' + height ).height(20)
+			.css('top', ((height/2) - 10)).appendTo(rGrid);
+
 			rGrid.appendTo('body');
+
 		};
 		if(settings.drawGrid){
 				drawGrid(settings.drawGrid.top, settings.drawGrid.left, settings.drawGrid.width, settings.drawGrid.height
