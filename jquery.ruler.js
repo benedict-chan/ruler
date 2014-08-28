@@ -25,14 +25,27 @@
 				hMouse = '<div class="hMouse"></div>',
 				mousePosBox = '<div class="mousePosBox">x: 50%, y: 50%</div>';
 
+		var init = $('.hRule').length;
+
 		if (!Modernizr.touch) {
 			// Mouse crosshair
-			if (settings.showCrosshair) {
-				$('body').append(vMouse, hMouse);
+			if (settings.showCrosshair ) {
+				if(!($('.vMouse').length)){
+					$('body').append(vMouse, hMouse);
+				}
+			}
+			else{
+				$('.vMouse').remove();
+				$('.hMouse').remove();
 			}
 			// Mouse position
 			if (settings.showMousePos) {
-				$('body').append(mousePosBox);
+				if(!($('.mousePosBox').length)){
+					$('body').append(mousePosBox);
+				}
+			}
+			else{
+				$('.mousePosBox').remove();
 			}
 			// If either, then track mouse position
 			if (settings.showCrosshair || settings.showMousePos) {
@@ -53,14 +66,16 @@
 		}
 
 		//resize
-		$(window).resize(function(e){
-			var $hRule = $('.hRule');
-			var $vRule = $('.vRule');
-			$hRule.empty();
-			$vRule.empty().height(0).outerHeight($vRule.parent().outerHeight());
+		if(!init){
+			$(window).resize(function(e){
+				var $hRule = $('.hRule');
+				var $vRule = $('.vRule');
+				$hRule.empty();
+				$vRule.empty().height(0).outerHeight($vRule.parent().outerHeight());
 
-			redrawRuler($hRule, $vRule);
-		});//resize
+				redrawRuler($hRule, $vRule);
+			});
+		}//resize
 
 		var redrawRuler = function($hRule, $vRule){
 
@@ -105,32 +120,33 @@
 
 			// Attach rulers
 
-			// Should not need 1 min padding-top of 1px but it does
-			// will figure it out some other time
-			$this.css("padding-top", settings.hRuleSize + 1 + "px");
-			if (settings.hRuleSize > 0) {
-				$(hRule).height(settings.hRuleSize).prependTo($this);
+			if(!init){
+						// Should not need 1 min padding-top of 1px but it does
+						// will figure it out some other time
+						$this.css("padding-top", settings.hRuleSize + 1 + "px");
+						if (settings.hRuleSize > 0) {
+							$(hRule).height(settings.hRuleSize).prependTo($this);
+						}
+
+						if (settings.vRuleSize > 0) {
+							var oldWidth = $this.outerWidth();
+							$this.css("padding-left", settings.vRuleSize + 1 + "px").outerWidth(oldWidth);
+							$(vRule).width(settings.vRuleSize).height($this.outerHeight()).prependTo($this);
+						}
+
+						if ( (settings.vRuleSize > 0) && (settings.hRuleSize > 0) ) {
+							$(corner).css({
+								width: settings.vRuleSize,
+								height: settings.hRuleSize
+							}).prependTo($this);
+						}
+
+
+						var $hRule = $this.children('.hRule');
+						var $vRule = $this.children('.vRule');
+
+						redrawRuler($hRule, $vRule);
 			}
-
-			if (settings.vRuleSize > 0) {
-				var oldWidth = $this.outerWidth();
-				$this.css("padding-left", settings.vRuleSize + 1 + "px").outerWidth(oldWidth);
-				$(vRule).width(settings.vRuleSize).height($this.outerHeight()).prependTo($this);
-			}
-
-			if ( (settings.vRuleSize > 0) && (settings.hRuleSize > 0) ) {
-				$(corner).css({
-					width: settings.vRuleSize,
-					height: settings.hRuleSize
-				}).prependTo($this);
-			}
-
-
-			var $hRule = $this.children('.hRule');
-			var $vRule = $this.children('.vRule');
-
-			redrawRuler($hRule, $vRule);
-
 		});//each
 
 	};//ruler
