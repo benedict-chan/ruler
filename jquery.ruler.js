@@ -139,8 +139,31 @@
 			.appendTo(rGrid);
 
 			rGrid.appendTo('body');
+
+		var gridColor = rGrid.css('background-color');
+		var borderColor = LightenDarkenColor(gridColor, 0.5);//Darken
+
+		rGrid.css({"border-color": borderColor,
+		             "border-width":"3px",
+		             "border-style":"solid"});
+
 		};
 
+		var LightenDarkenColor = function(col, change) {
+			var colorArray = col.replace('rgb(','').replace(')','').split(',');
+
+			var colorRed = Math.floor((colorArray[0]*change)+parseInt(colorArray[0]));
+			colorRed = Math.min(colorRed, 255);
+
+			var colorGreen = Math.floor((colorArray[1]*change)+parseInt(colorArray[1]));
+			colorGreen = Math.min(colorGreen, 255);
+
+			var colorBlue = Math.floor((colorArray[2]*change)+parseInt(colorArray[2]));
+			colorBlue = Math.min(colorBlue, 255);
+
+			return 'rgb('+colorRed+','+colorGreen+','+colorBlue+')';
+
+		};
 
 		if(settings.drawGrid){
 				drawGrid(settings.drawGrid.top, settings.drawGrid.left, settings.drawGrid.width, settings.drawGrid.height
