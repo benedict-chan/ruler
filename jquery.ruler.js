@@ -131,6 +131,10 @@
 			$('<div></div>').addClass('rGridHeight rGridText').text('H:' + height ).height(20)
 			.css('top', ((height/2) - 10)).appendTo(rGrid);
 
+			$('<div></div>').addClass('rGridClose rGridText').text('X')
+			.on('click', function(){ $(this).closest('.rGrid').remove(); })
+			.appendTo(rGrid);
+
 			rGrid.appendTo('body');
 		};
 

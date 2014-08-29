@@ -176,3 +176,13 @@ font-size: 12px;
 	position: relative;
 	float: right;
 }
+.rGridClose{
+	background: rgba(0,0,0,0.8);
+	color: #fff;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	cursor: pointer;
+    position: absolute;
+		right: 0;
+}
