@@ -158,6 +158,7 @@ body {
 	position: absolute;
 	opacity: 0.5;
 	background: #C92020;
+	color: #fff;
 }
 .rGridText{
 font-family: source code pro;
@@ -178,11 +179,11 @@ font-size: 12px;
 }
 .rGridClose{
 	background: rgba(0,0,0,0.8);
-	color: #fff;
 	width: 15px;
 	height: 15px;
 	text-align: center;
 	cursor: pointer;
     position: absolute;
 		right: 0;
+		color: #fff;
 }

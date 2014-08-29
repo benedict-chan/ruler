@@ -114,7 +114,7 @@
 			}//vert ticks
 		};
 
-		var drawGrid = function(top, left, width, height, background){
+		var drawGrid = function(top, left, width, height, background, color){
 			var rGrid = $('<div></div>')
 			.addClass('rGrid')
 			.width(width)
@@ -124,6 +124,9 @@
 
 			if(background){
 				rGrid.css('background', background);
+			}
+			if(color){
+				rGrid.css('color', color);
 			}
 
 			$('<div></div>').addClass('rGridPos rGridText').text(' (' + left + ', '  + top + ')').appendTo(rGrid);
@@ -138,9 +141,10 @@
 			rGrid.appendTo('body');
 		};
 
+
 		if(settings.drawGrid){
 				drawGrid(settings.drawGrid.top, settings.drawGrid.left, settings.drawGrid.width, settings.drawGrid.height
-				,settings.drawGrid.background);
+				,settings.drawGrid.background, settings.drawGrid.color);
 		}
 
 

@@ -66,9 +66,9 @@ Methods
 
 ### drawGrid
 
-drawGrid(top, left, width, height[, background])  
+drawGrid(top, left, width, height[, background, color])  
 Draws a grid on the screen
 
     $('body').ruler({
-         drawGrid:{ top: 120, left: 150, width: 100, height: 200, background: '#fff000' }
+         drawGrid:{ top: 120, left: 150, width: 100, height: 200, background: '#fff000', color: '#000000' }
     });
